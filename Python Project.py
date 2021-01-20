@@ -196,8 +196,7 @@ def game_loop():
                 checkmark_label = Label(root, image=None)
 
                 solution_x += 50
-                x = 25
-                y = 40
+               
         
             else:
                 print("Incorrect")
@@ -303,8 +302,7 @@ intro_menu()
 
 
 
-x = 10
-y = 67
+
 
 root.mainloop()
 
