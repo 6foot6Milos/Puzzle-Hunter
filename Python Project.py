@@ -303,7 +303,7 @@ intro_menu()
 
 
 
-
+x = 10
 
 root.mainloop()
 
