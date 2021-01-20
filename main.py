@@ -5,6 +5,7 @@ import random
 import time
 from subprocess import call
 from menu import start_menu
+from end import play_again
 #from pygame.locals import *
 pygame.mixer.init()
 #pygame.init()
@@ -97,16 +98,15 @@ def stop():
 
 
 
-
-
-def intro_menu(): 
-    
-    press_b = Button(root, text="Joe", command = game_loop)
-    press_b.place(bordermode = OUTSIDE, x=100, y=100)
-
-
-
 def game_loop():
+
+
+    root = Tk()
+    root.title("Puzzle-Hunter")
+    root.geometry("1080x1080")
+    bg = PhotoImage(file="Objects/bg.png")
+    bg_label = Label(root, image=bg)
+    bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
     #Background creation code
     #bg = PhotoImage(file="Objects/resized_bg.png")
@@ -307,18 +307,19 @@ def game_loop():
 #    c = CallPy()
 #    c.call_pyhton_file()
 
-start_menu()
 
+start_menu()
 
 root = Tk()
 root.title("Puzzle-Hunter")
 root.geometry("1080x1080")
-
-
-
 bg = PhotoImage(file="Objects/bg.png")
 bg_label = Label(root, image=bg)
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
 game_loop()
+
+play_again()
+
 root.mainloop()
 

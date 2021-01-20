@@ -2,9 +2,6 @@ from tkinter import *
 import pygame
 
 
-#def game_start():
-#    pygame.quit()
-
 def start_menu():
     root = Tk()
     root.title("Puzzle-Hunter")
