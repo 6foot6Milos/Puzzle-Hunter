@@ -304,6 +304,7 @@ intro_menu()
 
 
 x = 10
+y = 67
 
 root.mainloop()
 
