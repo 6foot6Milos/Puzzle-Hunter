@@ -1,8 +1,8 @@
 from tkinter import *
-
+import sys
 
 def game_start(): 
-    quit()
+    sys.exit()
 
 
 def start_menu():
