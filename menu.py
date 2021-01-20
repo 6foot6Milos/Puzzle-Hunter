@@ -1,5 +1,4 @@
 from tkinter import *
-import pygame
 
 
 def start_menu():

@@ -8,8 +8,6 @@ from menu import start_menu
 from end import play_again
 #from pygame.locals import *
 pygame.mixer.init()
-#pygame.init()
-
 
 
 
@@ -24,10 +22,9 @@ puzzle_07 = ["Images/c8+.png", "Images/c8+ Qd8.png", "Images/c8+ Qd8 Qd8.png"]
 puzzle_08 = ["Images/Qh5.png", "Images/Qh5 g6.png", "Images/Qh5 g6 Qg6 hg6.png", "Images/Qh5 g6 Qg6 hg6 Bg6.png"]
 puzzle_09 = []
 
+
 #master list of all the puzzle lists
 master_list = [puzzle_01, puzzle_02, puzzle_03, puzzle_04, puzzle_05, puzzle_06, puzzle_07, puzzle_08]
-
-
 
 
 #Answers list in order
@@ -100,18 +97,6 @@ def stop():
 
 def game_loop():
 
-
-    root = Tk()
-    root.title("Puzzle-Hunter")
-    root.geometry("1080x1080")
-    bg = PhotoImage(file="Objects/bg.png")
-    bg_label = Label(root, image=bg)
-    bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-    #Background creation code
-    #bg = PhotoImage(file="Objects/resized_bg.png")
-    #bg_label = Label(root, image=bg)
-    #bg_label.place(x=0, y=0, relwidth=1, relheight=1)
     
 
     #Text changes from "GOGOGO" to "Times up bro" after 5 minutes (300000 milliseconds) 
