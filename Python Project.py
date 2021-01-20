@@ -3,6 +3,8 @@ from PIL import ImageTk, Image
 import pygame
 import random
 import time
+from subprocess import call
+from menu import start_menu
 #from pygame.locals import *
 pygame.mixer.init()
 #pygame.init()
@@ -288,21 +290,31 @@ def game_loop():
             print(score)
 
     
-root = Tk()
-root.title("Puzzle-Hunter")
-root.geometry("1080x1080")
+#root = Tk()
+#root.title("Puzzle-Hunter")
+#root.geometry("1080x1080")
 
 
 
-bg = PhotoImage(file="Objects/bg.png")
-bg_label = Label(root, image=bg)
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+#bg = PhotoImage(file="Objects/bg.png")
+#bg_label = Label(root, image=bg)
+#bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-intro_menu()
+#intro_menu()
 
+#class CallPy(object):
 
+#    def __init__(self, path = 'menu.py'):
+#        self.path = path
+#        pass
 
+#    def call_pyhton_file(self):
+#        call(["Python3", "{}".format(self.path)])
 
+#if __name__ == "__main__":
+#    c = CallPy()
+#    c.call_pyhton_file()
 
-root.mainloop()
+start_menu()
+#root.mainloop()
 
