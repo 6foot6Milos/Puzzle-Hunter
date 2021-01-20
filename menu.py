@@ -2,8 +2,7 @@ from tkinter import *
 
 
 def game_start(): 
-    x=10
-    print(x)
+    quit()
 
 
 def start_menu():
@@ -16,7 +15,7 @@ def start_menu():
 
 
     start_button = Button(root, text="Start Game", command = game_start)
-    start_button.grid(column=2,row=3)
+    start_button.place(bordermode=OUTSIDE, x=200, y=200)
 
 
 

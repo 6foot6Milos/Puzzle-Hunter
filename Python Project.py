@@ -290,15 +290,6 @@ def game_loop():
             print(score)
 
     
-#root = Tk()
-#root.title("Puzzle-Hunter")
-#root.geometry("1080x1080")
-
-
-
-#bg = PhotoImage(file="Objects/bg.png")
-#bg_label = Label(root, image=bg)
-#bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 #intro_menu()
 
@@ -316,5 +307,17 @@ def game_loop():
 #    c.call_pyhton_file()
 
 start_menu()
-#root.mainloop()
+
+
+root = Tk()
+root.title("Puzzle-Hunter")
+root.geometry("1080x1080")
+
+
+
+bg = PhotoImage(file="Objects/bg.png")
+bg_label = Label(root, image=bg)
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+game_loop()
+root.mainloop()
 
