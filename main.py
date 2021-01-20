@@ -9,7 +9,8 @@ from end import play_again
 #from pygame.locals import *
 pygame.mixer.init()
 
-
+#Decides which menu to go to
+window=0
 
 #Puzzle lists
 puzzle_01 = ["Images/d4+.png", "Images/d4#.png"]
@@ -94,7 +95,7 @@ def stop():
     pygame.mixer.music.stop()
 
 
-
+#Game menu 
 def game_loop():
 
     
@@ -292,19 +293,30 @@ def game_loop():
 #    c = CallPy()
 #    c.call_pyhton_file()
 
+#Main game loop
 
-start_menu()
 
-root = Tk()
-root.title("Puzzle-Hunter")
-root.geometry("1080x1080")
-bg = PhotoImage(file="Objects/bg.png")
-bg_label = Label(root, image=bg)
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-game_loop()
+while True:
+    if window==0:
+        start_menu()
+        window=1
 
-play_again()
+    elif window==1:
+        root = Tk()
+        root.title("Puzzle-Hunter")
+        root.geometry("1080x1080")
+        bg = PhotoImage(file="Objects/bg.png")
+        bg_label = Label(root, image=bg)
+        bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+        window=2
+
+        game_loop()
+        
+
+    elif window==2:
+        play_again()
+        window=0
 
 root.mainloop()
 

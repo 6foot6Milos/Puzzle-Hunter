@@ -7,7 +7,7 @@ def start_menu():
     root.geometry("1080x1080")
 
     
-
+    
 
 
     start_button = Button(root, text="Start Game", command = root.destroy)
