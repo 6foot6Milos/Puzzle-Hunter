@@ -1,20 +1,20 @@
 from tkinter import *
-import sys
+import pygame
 
-def game_start(): 
-    sys.exit()
 
+#def game_start():
+#    pygame.quit()
 
 def start_menu():
     root = Tk()
     root.title("Puzzle-Hunter")
     root.geometry("1080x1080")
 
+    
 
 
 
-
-    start_button = Button(root, text="Start Game", command = game_start)
+    start_button = Button(root, text="Start Game", command = root.destroy)
     start_button.place(bordermode=OUTSIDE, x=200, y=200)
 
 
