@@ -11,14 +11,14 @@ pygame.mixer.init()
 
 
 #Puzzle lists
-puzzle_01 = ["Chess Puzzle Images/d4+.png", "Chess Puzzle Images/d4#.png"]
-puzzle_02 = ["Chess Puzzle Images/g6.png", "Chess Puzzle Images/g6 hxg6.png", "Chess Puzzle Images/g6 hxg6 Nxg6#.png"]
-puzzle_03 = ["Chess Puzzle Images/Qa5+.png", "Chess Puzzle Images/Qa5+ Kf1.png", "Chess Puzzle Images/Qa5+ Kf1 Qxb5.png"]
-puzzle_04 = ["Chess Puzzle Images/Qg7.png", "Chess Puzzle Images/Qg7 Ng7.png", "Chess Puzzle Images/Qg7 Ng7 Nh6.png"]
-puzzle_05 = ["Chess Puzzle Images/Nd6+.png", "Chess Puzzle Images/Nd6#.png"]
-puzzle_06 = ["Chess Puzzle Images/Bf6+.png", "Chess Puzzle Images/Bf6#.png"]
-puzzle_07 = ["Chess Puzzle Images/c8+.png", "Chess Puzzle Images/c8+ Qd8.png", "Chess Puzzle Images/c8+ Qd8 Qd8.png"]
-puzzle_08 = ["Chess Puzzle Images/Qh5.png", "Chess Puzzle Images/Qh5 g6.png", "Chess Puzzle Images/Qh5 g6 Qg6 hg6.png", "Chess Puzzle Images/Qh5 g6 Qg6 hg6 Bg6.png"]
+puzzle_01 = ["Images/d4+.png", "Images/d4#.png"]
+puzzle_02 = ["Images/g6.png", "Images/g6 hxg6.png", "Images/g6 hxg6 Nxg6#.png"]
+puzzle_03 = ["Images/Qa5+.png", "Images/Qa5+ Kf1.png", "Images/Qa5+ Kf1 Qxb5.png"]
+puzzle_04 = ["Images/Qg7.png", "Images/Qg7 Ng7.png", "Images/Qg7 Ng7 Nh6.png"]
+puzzle_05 = ["Images/Nd6+.png", "Images/Nd6#.png"]
+puzzle_06 = ["Images/Bf6+.png", "Images/Bf6#.png"]
+puzzle_07 = ["Images/c8+.png", "Images/c8+ Qd8.png", "Images/c8+ Qd8 Qd8.png"]
+puzzle_08 = ["Images/Qh5.png", "Images/Qh5 g6.png", "Images/Qh5 g6 Qg6 hg6.png", "Images/Qh5 g6 Qg6 hg6 Bg6.png"]
 puzzle_09 = []
 
 #master list of all the puzzle lists
@@ -67,19 +67,19 @@ def play():
 
 
     if random_number == 1:
-        pygame.mixer.music.load("01_Main Menu.mp3")
+        pygame.mixer.music.load("Objects/01_Main Menu.mp3")
         pygame.mixer.music.play(loops=0)
 
     elif random_number == 2:
-        pygame.mixer.music.load("02_Shop Theme.mp3")
+        pygame.mixer.music.load("Objects/02_Shop Theme.mp3")
         pygame.mixer.music.play(loops=0)
         
     elif random_number == 3:
-        pygame.mixer.music.load("03_Prepare to Race.mp3")
+        pygame.mixer.music.load("Objects/03_Prepare to Race.mp3")
         pygame.mixer.music.play(loops=0)
 
     elif random_number == 4:
-        pygame.mixer.music.load("13_The Arena.mp3")
+        pygame.mixer.music.load("Objects/13_The Arena.mp3")
         pygame.mixer.music.play(loops=0)
 
     else:
@@ -180,7 +180,7 @@ def game_loop():
                 new_pic = ImageTk.PhotoImage(resized)
                 my_label = Label(root, image=new_pic)
                 my_label.place(bordermode = OUTSIDE, x=100, y=495)
-                coin_sound = pygame.mixer.Sound("Coin solve sound.x-wav")
+                coin_sound = pygame.mixer.Sound("Objects/Coin solve sound.x-wav")
                 pygame.mixer.Sound.play(coin_sound)
                 chess_move = input("PRESS ANY KEY")
                 time.sleep(1)
@@ -189,7 +189,7 @@ def game_loop():
 
 
                 #Correct answer places checkmark
-                checkmark = PhotoImage(file="Objects/Checkmarkk.png")
+                checkmark = PhotoImage(file="Objects/Green checkmark.png")
                 checkmark_label = Label(root, image=checkmark)
                 checkmark_label.config(bg="white")
                 checkmark_label.place(x=solution_x, y=solution_y)
@@ -231,7 +231,7 @@ def game_loop():
                     new_pic = ImageTk.PhotoImage(resized)
                     my_label = Label(root, image=new_pic)
                     my_label.place(bordermode = OUTSIDE, x=100, y=495)
-                    coin_sound = pygame.mixer.Sound("Coin solve sound.x-wav")
+                    coin_sound = pygame.mixer.Sound("Objects/Coin solve sound.x-wav")
                     pygame.mixer.Sound.play(coin_sound)
                     chess_move = input("PRESS ANY KEY")
                     time.sleep(1)
@@ -239,7 +239,7 @@ def game_loop():
                     print(score)
                 
                     #Correct answer places checkmark
-                    checkmark = PhotoImage(file="Objects/Checkmarkk.png")
+                    checkmark = PhotoImage(file="Objects/Green checkmark.png")
                     checkmark_label = Label(root, image=checkmark)
                     checkmark_label.config(bg="white")
                     checkmark_label.place(x=solution_x, y=solution_y)
@@ -280,7 +280,7 @@ def game_loop():
             new_pic = ImageTk.PhotoImage(resized)
             my_label = Label(root, image=new_pic)
             my_label.place(bordermode = OUTSIDE, x=100, y=495)
-            coin_sound = pygame.mixer.Sound("Coin solve sound.x-wav")
+            coin_sound = pygame.mixer.Sound("Objects/Coin solve sound.x-wav")
             pygame.mixer.Sound.play(coin_sound)
             chess_move = input("PRESS ANY KEY")
             time.sleep(1)
@@ -294,7 +294,7 @@ root.geometry("1080x1080")
 
 
 
-bg = PhotoImage(file="Objects/resized_bg.png")
+bg = PhotoImage(file="Objects/bg.png")
 bg_label = Label(root, image=bg)
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
