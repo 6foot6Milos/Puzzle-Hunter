@@ -1,10 +1,8 @@
+import tkinter
 from tkinter import *
 from PIL import ImageTk, Image
 import pygame
-import random
-import time
-pygame.init()
-from subprocess import call
+import random, time, sys
 from menu import start_menu
 from end import play_again
 #from pygame.locals import *
@@ -99,8 +97,6 @@ def stop():
 
 #Game menu 
 def game_loop():
-
-    
 
     #Text changes from "GOGOGO" to "Times up bro" after 5 minutes (300000 milliseconds) 
     timer_label = Label(root, text="5:00", font=("Helvetica", 32), fg=("gold"), bg = "white")
@@ -280,29 +276,12 @@ def game_loop():
 
     
 
-#intro_menu()
-
-#class CallPy(object):
-
-#    def __init__(self, path = 'menu.py'):
-#        self.path = path
-#        pass
-
-#    def call_pyhton_file(self):
-#        call(["Python3", "{}".format(self.path)])
-
-#if __name__ == "__main__":
-#    c = CallPy()
-#    c.call_pyhton_file()
-
 #Main game loop
-
-
-
 while True:
     if window==0:
         start_menu()
-        window=1
+        
+        
 
     elif window==1:
         root = Tk()
@@ -314,11 +293,12 @@ while True:
         window=2
 
         game_loop()
+        root.destroy()
         
 
     elif window==2:
         play_again()
-        window=0
+        
 
 root.mainloop()
 
