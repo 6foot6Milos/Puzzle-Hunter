@@ -3,11 +3,13 @@ from PIL import ImageTk, Image
 import pygame
 import random
 import time
+pygame.init()
 from subprocess import call
 from menu import start_menu
 from end import play_again
 #from pygame.locals import *
 pygame.mixer.init()
+
 
 #Decides which menu to go to
 window=0
