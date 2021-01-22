@@ -63,23 +63,18 @@ def play():
 
     #Mostly in the interest of learning how to use music, the following code takes
     #a random number (1-4) which randomly selects a track for the pygame mixer to play
-    random_number = random.randrange(1,5)
+    random_number = random.randrange(1,4)
     print(random_number)
 
-
     if random_number == 1:
-        pygame.mixer.music.load("Objects/01_Main Menu.mp3")
-        pygame.mixer.music.play(loops=0)
-
-    elif random_number == 2:
         pygame.mixer.music.load("Objects/02_Shop Theme.mp3")
         pygame.mixer.music.play(loops=0)
         
-    elif random_number == 3:
+    elif random_number == 2:
         pygame.mixer.music.load("Objects/03_Prepare to Race.mp3")
         pygame.mixer.music.play(loops=0)
 
-    elif random_number == 4:
+    elif random_number == 3:
         pygame.mixer.music.load("Objects/13_The Arena.mp3")
         pygame.mixer.music.play(loops=0)
 
@@ -119,6 +114,11 @@ def game_loop():
     user_move_input = Entry(root, width = 15)
     user_move_input.config(bg="orange")
     user_move_input.place(bordermode=OUTSIDE, x=730, y=850)
+
+    #Slider for music volume
+    music_slider = Scale(root, from_=0, to=10, tickinterval = 10, orient=HORIZONTAL)
+    music_slider.pack()
+    pygame.mixer.music.set_volume(music_slider.get()/10)
 
     #RANDOM BUTTON NOT CURRENTLY IN USE
     random_button = Button(root, text = "Enter Move")
