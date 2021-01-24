@@ -23,12 +23,16 @@ def start_menu():
 
     root = Tk()
     root.title("Puzzle-Hunter")
-    root.geometry("1080x1080")
+    root.geometry("1280x960")
     pygame.mixer.music.load("Objects/01_Main Menu.mp3")
     pygame.mixer.music.play(loops=2)
 
-    start_button = Button(root, text="Start Game", command = start_command)
-    start_button.place(bordermode=OUTSIDE, x=200, y=200)
+    bg = PhotoImage(file="Objects/Start Menu.png")
+    bg_label = Label(root, image=bg)
+    bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+    start_button = Button(root, text="Start Game", bg = "cyan4", fg = "goldenrod2", width = 90, height = 5, command = start_command)
+    start_button.place(bordermode=OUTSIDE, x=300, y=540)
     
     root.mainloop()
 
