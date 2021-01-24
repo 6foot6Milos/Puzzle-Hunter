@@ -25,10 +25,10 @@ def start_menu():
     root = Tk()
     root.title("Puzzle-Hunter")
     root.geometry("1280x960")
-    pygame.mixer.music.load("Objects/01_Main Menu.mp3")
+    pygame.mixer.music.load("Game Files/Objects/01_Main Menu.mp3")
     pygame.mixer.music.play(loops=2)
 
-    bg = PhotoImage(file="Objects/Start Menu.png")
+    bg = PhotoImage(file="Game Files/Objects/Start Menu.png")
     bg_label = Label(root, image=bg)
     bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 

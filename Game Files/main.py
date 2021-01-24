@@ -14,14 +14,14 @@ pygame.mixer.init()
 window=0
 
 #Puzzle lists
-puzzle_01 = ["Images/d4+.png", "Images/d4#.png"]
-puzzle_02 = ["Images/g6.png", "Images/g6 hxg6.png", "Images/g6 hxg6 Nxg6#.png"]
-puzzle_03 = ["Images/Qa5+.png", "Images/Qa5+ Kf1.png", "Images/Qa5+ Kf1 Qxb5.png"]
-puzzle_04 = ["Images/Qg7.png", "Images/Qg7 Ng7.png", "Images/Qg7 Ng7 Nh6.png"]
-puzzle_05 = ["Images/Nd6+.png", "Images/Nd6#.png"]
-puzzle_06 = ["Images/Bf6+.png", "Images/Bf6#.png"]
-puzzle_07 = ["Images/c8+.png", "Images/c8+ Qd8.png", "Images/c8+ Qd8 Qd8.png"]
-puzzle_08 = ["Images/Qh5.png", "Images/Qh5 g6.png", "Images/Qh5 g6 Qg6 hg6.png", "Images/Qh5 g6 Qg6 hg6 Bg6.png"]
+puzzle_01 = ["Game Files/Images/d4+.png", "Game Files/Images/d4#.png"]
+puzzle_02 = ["Game Files/Images/g6.png", "Game Files/Images/g6 hxg6.png", "Game Files/Images/g6 hxg6 Nxg6#.png"]
+puzzle_03 = ["Game Files/Images/Qa5+.png", "Game FilesImages/Qa5+ Kf1.png", "Images/Qa5+ Kf1 Qxb5.png"]
+puzzle_04 = ["Game Files/Images/Qg7.png", "Game Files/Images/Qg7 Ng7.png", "Game Files/Images/Qg7 Ng7 Nh6.png"]
+puzzle_05 = ["Game Files/Images/Nd6+.png", "Game Files/Images/Nd6#.png"]
+puzzle_06 = ["Game Files/Images/Bf6+.png", "Game Files/Images/Bf6#.png"]
+puzzle_07 = ["Game Files/Images/c8+.png", "Game Files/Images/c8+ Qd8.png", "Game Files/Images/c8+ Qd8 Qd8.png"]
+puzzle_08 = ["Game Files/Images/Qh5.png", "Game Files/Images/Qh5 g6.png", "Game Files/Images/Qh5 g6 Qg6 hg6.png", "Game Files/Images/Qh5 g6 Qg6 hg6 Bg6.png"]
 puzzle_09 = []
 
 
@@ -299,7 +299,7 @@ while True:
         root = Tk()
         root.title("Puzzle-Hunter")
         root.geometry("1080x1080")
-        bg = PhotoImage(file="Objects/bg.png")
+        bg = PhotoImage(file="Game Files/Objects/bg.png")
         bg_label = Label(root, image=bg)
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
         
