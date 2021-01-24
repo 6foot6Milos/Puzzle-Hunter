@@ -145,12 +145,13 @@ def game_loop():
     solution_x = 80
     solution_y = 300
 
-    timer()
+    
    
 
     #For different puzzle program will run different code
     while True:
 
+        timer()
         #Generate random puzzle
         random_puzzle = random.randrange(0, 8)
     

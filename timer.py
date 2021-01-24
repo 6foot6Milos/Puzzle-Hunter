@@ -33,7 +33,7 @@ def timer():
             temp = int(minute.get())*60 + int(second.get())
         except:
             print("Please input the right value")
-        while temp >-1:
+        if temp >-1:
             
             # divmod(firstvalue = temp//60, secondvalue = temp%60)
             mins,secs = divmod(temp,60) 
@@ -67,6 +67,10 @@ def timer():
             # after every one sec the value of temp will be decremented
             # by one
             temp -= 1
+
+        else:
+            main.window= -1
+            root.destroy()
     
     submit()
     
