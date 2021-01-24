@@ -85,6 +85,51 @@ def play():
 
 
 
+def submit():
+    try:
+        # the input provided by the user is
+        # stored in here :temp
+        temp = int(hour.get())*3600 + int(minute.get())*60 + int(second.get())
+    except:
+        print("Please input the right value")
+    while temp >-1:
+         
+        # divmod(firstvalue = temp//60, secondvalue = temp%60)
+        mins,secs = divmod(temp,60) 
+  
+        # Converting the input entered in mins or secs to hours,
+        # mins ,secs(input = 110 min --> 120*60 = 6600 => 1hr :
+        # 50min: 0sec)
+        hours=0
+        if mins >60:
+             
+            # divmod(firstvalue = temp//60, secondvalue 
+            # = temp%60)
+            hours, mins = divmod(mins, 60)
+         
+        # using format () method to store the value up to 
+        # two decimal places
+        hour.set("{0:2d}".format(hours))
+        minute.set("{0:2d}".format(mins))
+        second.set("{0:2d}".format(secs))
+  
+        # updating the GUI window after decrementing the
+        # temp value every time
+        root.update()
+        time.sleep(1)
+  
+        # when temp value = 0; then a messagebox pop's up
+        # with a message:"Time's up"
+        if (temp == 0):
+            messagebox.showinfo("Time Countdown", "Time's up ")
+         
+        # after every one sec the value of temp will be decremented
+        # by one
+        temp -= 1
+
+
+
+
 #Simple function stops music
 def stop():
     pygame.mixer.music.stop()
@@ -116,7 +161,7 @@ def game_loop():
     user_move_input.place(bordermode=OUTSIDE, x=730, y=850)
 
     #Slider for music volume
-    music_slider = Scale(root, from_=0, to=10, tickinterval = 10, orient=HORIZONTAL)
+    music_slider = Scale(root, from_=1, to=10, tickinterval = 10, orient=HORIZONTAL)
     music_slider.pack()
     pygame.mixer.music.set_volume(music_slider.get()/10)
 
@@ -298,6 +343,9 @@ while True:
 
     elif window==2:
         play_again()
+
+    elif window== -1:
+        sys.exit()
         
 
 root.mainloop()

@@ -18,7 +18,8 @@ def start_menu():
     #Handles a quit event
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            sys.exit([arg])
+            main.window= -1
+            root.destroy() 
 
 
     root = Tk()

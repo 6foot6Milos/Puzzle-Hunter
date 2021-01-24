@@ -8,6 +8,10 @@ def play_again():
         main.window=1
         root.destroy()
 
+    def game_end_command():
+        main.window = -1
+        root.destroy()
+
     root = Tk()
     root.title("Puzzle-Hunter")
     root.geometry("1080x1080")
@@ -17,7 +21,7 @@ def play_again():
     start_button.place(bordermode=OUTSIDE, x=200, y=200)
    
 
-    quit_button = Button(root, text="Quit", command = root.destroy)
+    quit_button = Button(root, text="Quit", command = game_end_command)
     quit_button.place(bordermode=OUTSIDE, x=200, y=250)
 
     root.mainloop()
