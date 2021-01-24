@@ -5,6 +5,7 @@ import pygame
 import random, time, sys
 from menu import start_menu
 from end import play_again
+from timer import timer
 #from pygame.locals import *
 pygame.mixer.init()
 
@@ -57,7 +58,9 @@ def click():
 
 #Updates text after 5 mins
 def timer_update():
-    timer_label.config(text="Time's up", font=("Helvetica", 32))
+    #timer_label.config(text="Time's up", font=("Helvetica", 32))
+    window = 2
+    root.destroy()
 
 def play():
 
@@ -97,37 +100,12 @@ def stop():
 #Game menu 
 def game_loop():
 
-
+  
     
-    # Declaration of variables
-    hour=StringVar()
-    minute=StringVar()
-    second=StringVar()
-    
-    # setting the default value as 0
-    hour.set("00")
-    minute.set("00")
-    second.set("00")
-    
-    # Use of Entry class to take input from the user
-    
-    
-    minuteEntry= 5
-    
-    secondEntry= 0
-    
-    #Countdown button
-    btn = Button(root, text='Set Time Countdown', bd='5',command= submit)
-    btn.place(x = 70,y = 120)
-
-
-
-
-
     #Text changes from "GOGOGO" to "Times up bro" after 5 minutes (300000 milliseconds) 
-    timer_label = Label(root, text="5:00", font=("Helvetica", 32), fg=("gold"), bg = "white")
-    timer_label.place(x=810, y=300)
-    timer_label.after(300000, timer_update)
+    #timer_label = Label(root, text="5:00", font=("Helvetica", 32), fg=("gold"), bg = "white")
+    #timer_label.place(x=810, y=300)
+    #timer_label.after(300000, timer_update)
 
 
     #Play music button
@@ -167,6 +145,8 @@ def game_loop():
     solution_x = 80
     solution_y = 300
 
+    timer()
+   
 
     #For different puzzle program will run different code
     while True:
