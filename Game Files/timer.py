@@ -4,6 +4,11 @@ from tkinter import messagebox
 
 
 def timer():
+    timer_root = Tk()
+    timer_root.geometry("800x800")
+    timer_root.title("Timer")
+
+
     import main
     from main import root
     # Declaration of variables
@@ -17,10 +22,10 @@ def timer():
     second.set("00")
     
     # Use of Entry class to take input from the user
-    minuteEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=minute)
+    minuteEntry= Entry(timer_root, width=3, font=("Arial",18,""),textvariable=minute)
     minuteEntry.place(x=130,y=20)
     
-    secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
+    secondEntry= Entry(timer_root, width=3, font=("Arial",18,""),textvariable=second)
     secondEntry.place(x=180,y=20)
 
     time.sleep(5)
@@ -56,7 +61,7 @@ def timer():
     
             # updating the GUI window after decrementing the
             # temp value every time
-            root.update()
+            timer_root.update()
             time.sleep(1)
     
             # when temp value = 0; then a messagebox pop's up
@@ -70,7 +75,7 @@ def timer():
 
         else:
             main.window= -1
-            root.destroy()
+            timer_root.destroy()
     
     submit()
     

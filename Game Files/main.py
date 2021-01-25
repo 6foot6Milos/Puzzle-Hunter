@@ -6,6 +6,9 @@ import random, time, sys
 from menu import start_menu
 from end import play_again
 from timer import timer
+import threading
+from multiprocessing import Process
+import concurrent.futures
 #from pygame.locals import *
 pygame.mixer.init()
 
@@ -70,15 +73,15 @@ def play():
     print(random_number)
 
     if random_number == 1:
-        pygame.mixer.music.load("Objects/02_Shop Theme.mp3")
+        pygame.mixer.music.load("Game Files/Objects/02_Shop Theme.mp3")
         pygame.mixer.music.play(loops=0)
         
     elif random_number == 2:
-        pygame.mixer.music.load("Objects/03_Prepare to Race.mp3")
+        pygame.mixer.music.load("Game Files/Objects/03_Prepare to Race.mp3")
         pygame.mixer.music.play(loops=0)
 
     elif random_number == 3:
-        pygame.mixer.music.load("Objects/13_The Arena.mp3")
+        pygame.mixer.music.load("Game Files/Objects/13_The Arena.mp3")
         pygame.mixer.music.play(loops=0)
 
     else:
@@ -107,7 +110,10 @@ def game_loop():
     #timer_label.place(x=810, y=300)
     #timer_label.after(300000, timer_update)
 
+    #with concurrent.futures.ProcessPoolExecutor() as executor:
+    #    f1 = executor.submit(timer)
 
+  
     #Play music button
     music_start_button = Button(root, text="Play Song", font=("Helvetica", 32), command = play)
     music_start_button.configure(bg="gold", fg="purple")
@@ -135,6 +141,12 @@ def game_loop():
     random_button.place(bordermode=OUTSIDE, x=830, y=845)
 
 
+    #Timer process
+    #p1 = Process(target = timer)
+    #p1.start()
+    timer()
+
+
     #for every puzzle answered add one to score
     score = 0
 
@@ -150,8 +162,7 @@ def game_loop():
 
     #For different puzzle program will run different code
     while True:
-
-        timer()
+        
         #Generate random puzzle
         random_puzzle = random.randrange(0, 8)
     
@@ -303,8 +314,10 @@ while True:
         bg_label = Label(root, image=bg)
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
         
-        window=2
+        
 
+        window=2
+        
         game_loop()
         root.destroy()
         
