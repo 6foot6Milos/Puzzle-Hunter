@@ -62,10 +62,9 @@ def timer_update():
     window = 2
     root.destroy()
 
-#Offers the user the feature to randomly select a song while playing
+#Offers the user the feature to randomly select a song
 def play():
 
-    #Mostly in the interest of learning how to use music, the following code takes
     #a random number (1-4) which randomly selects a track for the pygame mixer to play
     random_number = random.randrange(1,4)
     print(random_number)

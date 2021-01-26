@@ -9,18 +9,13 @@ def start_menu():
     pygame.init()
     pygame.mixer.init()
 
+    
+
     def start_command():
         pygame.mixer.music.stop()
         main.window=1
         root.destroy()
         
-        
-    #Handles a quit event
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            main.window= -1
-            root.destroy() 
-
 
     root = Tk()
     root.title("Puzzle-Hunter")
@@ -33,8 +28,11 @@ def start_menu():
     bg_label = Label(root, image=bg)
     bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-    start_button = Button(root, text="Start Game", bg = "cyan4", fg = "goldenrod2", width = 90, height = 5, command = start_command)
-    start_button.place(bordermode=OUTSIDE, x=300, y=540)
+    start_button = Button(root, text="Start Game", font = ("Helvetica", 32), bg = "cyan4",fg = "goldenrod2", width = 28, command = start_command)
+    start_button.place(bordermode=OUTSIDE, x=266, y=540)
+    #x=300
+    #y=540
+    #width=25
     
     root.mainloop()
 
