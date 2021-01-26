@@ -122,10 +122,14 @@ def game_loop():
     user_move_input.config(bg="orange")
     user_move_input.place(bordermode=OUTSIDE, x=730, y=850)
 
-    #Slider for music volume
-    music_slider = Scale(root, from_=1, to=10, tickinterval=10, orient=HORIZONTAL, command=get_music_volume)
+    #Title for music volume slider
+    music_slider_title = Label(root, text="Music Volume", bg="white", fg="gold", font=("Helvetica", 16))
+    music_slider_title.place(bordermode=OUTSIDE, x=790, y=320)
+
+    #Music volume slider
+    music_slider = Scale(root, from_=1, to=10, tickinterval=10, bg="gold", orient=HORIZONTAL, command=get_music_volume)
     music_slider.set(0)
-    music_slider.pack()
+    music_slider.place(bordermode=OUTSIDE, x=805, y=350)
     
 
     #RANDOM BUTTON NOT CURRENTLY IN USE
