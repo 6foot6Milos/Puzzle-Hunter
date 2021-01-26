@@ -6,16 +6,20 @@ def play_again():
 
     def play_again_command():
         main.window=1
+        pygame.mixer.music.stop()
         root.destroy()
 
     def game_end_command():
         main.window = -1
+        pygame.mixer.music.stop()
         root.destroy()
 
     root = Tk()
     root.title("Puzzle-Hunter")
     root.geometry("1080x1080")
     root.resizable(width=False, height=False)
+    pygame.mixer.music.load("Game Files/Objects/01_Main Menu.mp3")
+    pygame.mixer.music.play()
 
 
     start_button = Button(root, text="Play Again",bg="Gold", command = play_again_command)

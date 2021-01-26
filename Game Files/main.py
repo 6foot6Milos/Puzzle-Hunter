@@ -46,15 +46,12 @@ answer_08 = ["qh5", "qg6", "bg6"]
 #nested list of puzzle answers
 master_answer = [answer_01, answer_02, answer_03, answer_04, answer_05, answer_06, answer_07, answer_08]
 
+#experiment
 def action():
     action_label = Label(root, text="You clicked")
     action_label.pack(pady = 20)
 
-
-
-
-
-
+#experiment
 def click():
     labell = Label(root, text=e)
     labell.pack(padx=100)
@@ -65,6 +62,7 @@ def timer_update():
     window = 2
     root.destroy()
 
+#Offers the user the feature to randomly select a song while playing
 def play():
 
     #Mostly in the interest of learning how to use music, the following code takes
@@ -103,8 +101,13 @@ def stop():
 def game_loop():
 
     def get_music_volume(event):
-        x = music_slider.get()
-        pygame.mixer.music.set_volume(x/10)
+        slider_value = music_slider.get()
+        pygame.mixer.music.set_volume(slider_value/10)
+
+    def chess_input_return(*args):
+        input_value = user_move_input.get()
+        return input_value
+        user_move_input.delete(0, END)
 
     #Play music button
     music_start_button = Button(root, text="Play Song", font=("Helvetica", 32), command=play)
@@ -120,7 +123,9 @@ def game_loop():
     #Input for chess moves
     user_move_input = Entry(root, width = 15)
     user_move_input.config(bg="orange")
+    user_move_input.bind("<Return>", chess_input_return)
     user_move_input.place(bordermode=OUTSIDE, x=730, y=850)
+
 
     #Title for music volume slider
     music_slider_title = Label(root, text="Music Volume", bg="white", fg="gold", font=("Helvetica", 16))
@@ -138,24 +143,18 @@ def game_loop():
     random_button.place(bordermode=OUTSIDE, x=830, y=845)
 
 
-
-    
-  
-    
-
-
     #for every puzzle answered add one to score
     score = 0
 
+
     #Three incorrect answers ends the game
     incorrect = 0
+
 
     #x and y of checkmark/red x/ neutral gray
     solution_x = 80
     solution_y = 300
 
-    
-   
 
     #For different puzzle program will run different code
     while True:
@@ -273,6 +272,7 @@ def game_loop():
                 my_label.place(bordermode = OUTSIDE, x=100, y=495)
                 my_label = Label(root, image=None)
                 chess_move = input("Answer: ")
+
                 if chess_move == master_answer[random_puzzle][answer_choose]:
                     image_chooser += 1
                     answer_choose += 1
@@ -314,7 +314,7 @@ while True:
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
         
         game_loop()
-
+        pygame.mixer.music.stop()
         window=2
         
        
