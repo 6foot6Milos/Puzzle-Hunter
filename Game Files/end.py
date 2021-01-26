@@ -15,6 +15,7 @@ def play_again():
     root = Tk()
     root.title("Puzzle-Hunter")
     root.geometry("1080x1080")
+    root.resizable(width=False, height=False)
 
 
     start_button = Button(root, text="Play Again",bg="Gold", command = play_again_command)

@@ -2,7 +2,7 @@ import tkinter
 from tkinter import *
 from PIL import ImageTk, Image
 import pygame
-import random, time, sys
+import random, time, sys, os
 from menu import start_menu
 from end import play_again
 from timer import timer
@@ -19,7 +19,7 @@ window=0
 #Puzzle lists
 puzzle_01 = ["Game Files/Images/d4+.png", "Game Files/Images/d4#.png"]
 puzzle_02 = ["Game Files/Images/g6.png", "Game Files/Images/g6 hxg6.png", "Game Files/Images/g6 hxg6 Nxg6#.png"]
-puzzle_03 = ["Game Files/Images/Qa5+.png", "Game FilesImages/Qa5+ Kf1.png", "Images/Qa5+ Kf1 Qxb5.png"]
+puzzle_03 = ["Game Files/Images/Qa5+.png", "Game Files/Images/Qa5+ Kf1.png", "Game Files/Images/Qa5+ Kf1 Qxb5.png"]
 puzzle_04 = ["Game Files/Images/Qg7.png", "Game Files/Images/Qg7 Ng7.png", "Game Files/Images/Qg7 Ng7 Nh6.png"]
 puzzle_05 = ["Game Files/Images/Nd6+.png", "Game Files/Images/Nd6#.png"]
 puzzle_06 = ["Game Files/Images/Bf6+.png", "Game Files/Images/Bf6#.png"]
@@ -91,8 +91,7 @@ def play():
 
 
 
-
-
+    
 
 
 #Simple function stops music
@@ -103,19 +102,12 @@ def stop():
 #Game menu 
 def game_loop():
 
-  
-    
-    #Text changes from "GOGOGO" to "Times up bro" after 5 minutes (300000 milliseconds) 
-    #timer_label = Label(root, text="5:00", font=("Helvetica", 32), fg=("gold"), bg = "white")
-    #timer_label.place(x=810, y=300)
-    #timer_label.after(300000, timer_update)
+    def get_music_volume(event):
+        x = music_slider.get()
+        pygame.mixer.music.set_volume(x/10)
 
-    #with concurrent.futures.ProcessPoolExecutor() as executor:
-    #    f1 = executor.submit(timer)
-
-  
     #Play music button
-    music_start_button = Button(root, text="Play Song", font=("Helvetica", 32), command = play)
+    music_start_button = Button(root, text="Play Song", font=("Helvetica", 32), command=play)
     music_start_button.configure(bg="gold", fg="purple")
     music_start_button.place(bordermode = OUTSIDE, x=745, y=100)
 
@@ -131,9 +123,10 @@ def game_loop():
     user_move_input.place(bordermode=OUTSIDE, x=730, y=850)
 
     #Slider for music volume
-    music_slider = Scale(root, from_=1, to=10, tickinterval = 10, orient=HORIZONTAL)
+    music_slider = Scale(root, from_=1, to=10, tickinterval=10, orient=HORIZONTAL, command=get_music_volume)
+    music_slider.set(0)
     music_slider.pack()
-    pygame.mixer.music.set_volume(music_slider.get()/10)
+    
 
     #RANDOM BUTTON NOT CURRENTLY IN USE
     random_button = Button(root, text = "Enter Move")
@@ -141,10 +134,10 @@ def game_loop():
     random_button.place(bordermode=OUTSIDE, x=830, y=845)
 
 
-    #Timer process
-    #p1 = Process(target = timer)
-    #p1.start()
-    timer()
+
+    
+  
+    
 
 
     #for every puzzle answered add one to score
@@ -171,7 +164,7 @@ def game_loop():
             print(f"thats it, your score is: {score}")
             break
 
-
+        #Handles all chess puzzles with a length of 2 images 
         elif len(master_list[random_puzzle]) == 2:
             image_chooser = 0
             answer_choose = 0
@@ -190,7 +183,7 @@ def game_loop():
                 new_pic = ImageTk.PhotoImage(resized)
                 my_label = Label(root, image=new_pic)
                 my_label.place(bordermode = OUTSIDE, x=100, y=495)
-                coin_sound = pygame.mixer.Sound("Objects/Coin solve sound.x-wav")
+                coin_sound = pygame.mixer.Sound("Game Files/Objects/Coin solve sound.x-wav")
                 pygame.mixer.Sound.play(coin_sound)
                 chess_move = input("PRESS ANY KEY")
                 time.sleep(1)
@@ -199,8 +192,8 @@ def game_loop():
 
 
                 #Correct answer places checkmark
-                checkmark = PhotoImage(file="Objects/Green checkmark.png")
-                checkmark_label = Label(root, image=checkmark)
+                checkmark = PhotoImage(file="Game Files/Objects/Green checkmark.png")
+                checkmark_label = Label(root, image=checkmark, anchor=NW)
                 checkmark_label.config(bg="white")
                 checkmark_label.place(x=solution_x, y=solution_y)
                 checkmark_label = Label(root, image=None)
@@ -212,7 +205,7 @@ def game_loop():
                 print("Incorrect")
                 incorrect += 1
         
-
+        #Handles all chess puzzles with a length of 3 images 
         elif len(master_list[random_puzzle]) == 3:
             image_chooser = 0
             answer_choose = 0
@@ -241,7 +234,7 @@ def game_loop():
                     new_pic = ImageTk.PhotoImage(resized)
                     my_label = Label(root, image=new_pic)
                     my_label.place(bordermode = OUTSIDE, x=100, y=495)
-                    coin_sound = pygame.mixer.Sound("Objects/Coin solve sound.x-wav")
+                    coin_sound = pygame.mixer.Sound("Game Files/Objects/Coin solve sound.x-wav")
                     pygame.mixer.Sound.play(coin_sound)
                     chess_move = input("PRESS ANY KEY")
                     time.sleep(1)
@@ -249,8 +242,8 @@ def game_loop():
                     print(score)
                 
                     #Correct answer places checkmark
-                    checkmark = PhotoImage(file="Objects/Green checkmark.png")
-                    checkmark_label = Label(root, image=checkmark)
+                    checkmark = PhotoImage(file="Game Files/Objects/Green checkmark.png")
+                    checkmark_label = Label(root, image=checkmark, anchor=NW)
                     checkmark_label.config(bg="white")
                     checkmark_label.place(x=solution_x, y=solution_y)
                     checkmark_label = Label(root, image=None)
@@ -290,7 +283,7 @@ def game_loop():
             new_pic = ImageTk.PhotoImage(resized)
             my_label = Label(root, image=new_pic)
             my_label.place(bordermode = OUTSIDE, x=100, y=495)
-            coin_sound = pygame.mixer.Sound("Objects/Coin solve sound.x-wav")
+            coin_sound = pygame.mixer.Sound("Game Files/Objects/Coin solve sound.x-wav")
             pygame.mixer.Sound.play(coin_sound)
             chess_move = input("PRESS ANY KEY")
             time.sleep(1)
@@ -310,15 +303,17 @@ while True:
         root = Tk()
         root.title("Puzzle-Hunter")
         root.geometry("1080x1080")
+        root.resizable(width=False, height=False)
+
         bg = PhotoImage(file="Game Files/Objects/bg.png")
         bg_label = Label(root, image=bg)
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
         
-        
+        game_loop()
 
         window=2
         
-        game_loop()
+       
         root.destroy()
         
 
