@@ -206,6 +206,8 @@ def game_loop():
 
             else:
                 print("Incorrect")
+                incorrect_sound = pygame.mixer.Sound("Game Files/Objects/Incorrect.mp3")
+                pygame.mixer.Sound.play(incorrect_sound)
                 incorrect += 1
         
         #Handles all chess puzzles with a length of 3 images 
@@ -252,9 +254,13 @@ def game_loop():
 
                 else:
                     print("Incorrect")    
+                    incorrect_sound = pygame.mixer.Sound("Game Files/Objects/Incorrect.mp3")
+                    pygame.mixer.Sound.play(incorrect_sound)
                     incorrect += 1
             else:
                 print("Incorrect")
+                incorrect_sound = pygame.mixer.Sound("Game Files/Objects/Incorrect.mp3")
+                pygame.mixer.Sound.play(incorrect_sound)
                 incorrect += 1
 
         elif len(master_list[random_puzzle]) == 4:
@@ -278,6 +284,8 @@ def game_loop():
 
                 else:
                     incorrect += 1
+                    incorrect_sound = pygame.mixer.Sound("Game Files/Objects/incorrect.mp3")
+                    pygame.mixer.Sound.play(incorrect_sound)
                     break_again = 1
                     break
 
