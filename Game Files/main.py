@@ -53,7 +53,7 @@ def action():
 
 #experiment
 def click():
-    labell = Label(root, text=e)
+    labell = Label(root, text="e")
     labell.pack(padx=100)
 
 #Updates text after 5 mins
@@ -93,13 +93,17 @@ def stop():
 #Game menu 
 def game_loop():
 
+    input_value = ""
+    
+
     def get_music_volume(event):
         slider_value = music_slider.get()
         pygame.mixer.music.set_volume(slider_value/10)
 
     def chess_input_return(*args):
         input_value = user_move_input.get()
-        return input_value
+        print(input_value)
+        #return input_value
         user_move_input.delete(0, END)
 
     #Play music button
@@ -113,12 +117,14 @@ def game_loop():
     music_stop_button.configure(bg="gold", fg="purple")
     music_stop_button.place(bordermode = OUTSIDE, x=745, y=200)
 
-    #Input for chess moves
+
+    #(Entry) Input for chess moves
     user_move_input = Entry(root, width = 15)
     user_move_input.config(bg="orange")
     user_move_input.bind("<Return>", chess_input_return)
     user_move_input.place(bordermode=OUTSIDE, x=730, y=850)
 
+    print(input_value)
 
     #Title for music volume slider
     music_slider_title = Label(root, text="Music Volume", bg="white", fg="gold", font=("Helvetica", 16))
@@ -157,6 +163,8 @@ def game_loop():
     #For different puzzle program will run different code
     while True:
         
+        
+
         #Generate random puzzle
         random_puzzle = random.randrange(0, 8)
     
@@ -176,6 +184,8 @@ def game_loop():
             my_label.place(bordermode = OUTSIDE, x=100, y=495)
             my_label = Label(root, image=None)
             chess_move = input("Answer: ")
+
+               
 
             if chess_move == master_answer[random_puzzle][image_chooser]:
                 image_chooser += 1
@@ -198,11 +208,11 @@ def game_loop():
                 checkmark_label.config(bg="white")
                 checkmark_label.place(x=solution_x, y=solution_y)
                 checkmark_label = Label(root, image=None)
-                score_text = Text (root, text = f"Score: {score}",font=("Helvetica", 32))
-                score_text.place(x=400, y=400)
+                #score_text = Text (root, text = f"Score: {score}",font=("Helvetica", 32))
+                #score_text.place(x=400, y=400)
                 solution_x += 50
-               
-        
+                
+            
             else:
                 print("Incorrect")
                 incorrect += 1
@@ -228,6 +238,7 @@ def game_loop():
                 my_label = Label(root, image=new_pic)
                 my_label.place(bordermode = OUTSIDE, x=100, y=495)
                 chess_move = input("Answer: ")
+                
 
                 if chess_move == master_answer[random_puzzle][answer_choose]:
                     image_chooser += 1
@@ -271,6 +282,8 @@ def game_loop():
                 my_label.place(bordermode = OUTSIDE, x=100, y=495)
                 my_label = Label(root, image=None)
                 chess_move = input("Answer: ")
+
+               
 
                 if chess_move == master_answer[random_puzzle][answer_choose]:
                     image_chooser += 1
