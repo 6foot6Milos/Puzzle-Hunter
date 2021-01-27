@@ -150,9 +150,9 @@ def game_loop():
     incorrect = 0
 
     #Text that displays the current score
-    #score_text = Text(root)
-    #score_text.insert(INSERT, f"Score: {score}")
-    #score_text.place(x=400, y=400)
+    score_text = Text(root)
+    score_text.insert(INSERT, f"Score: {score}")
+    score_text.place(x=400, y=400)
     
 
     #x and y of checkmark/red x/ neutral gray
@@ -208,8 +208,6 @@ def game_loop():
                 checkmark_label.config(bg="white")
                 checkmark_label.place(x=solution_x, y=solution_y)
                 checkmark_label = Label(root, image=None)
-                #score_text = Text (root, text = f"Score: {score}",font=("Helvetica", 32))
-                #score_text.place(x=400, y=400)
                 solution_x += 50
                 
             
