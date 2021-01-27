@@ -93,18 +93,19 @@ def stop():
 #Game menu 
 def game_loop():
 
-    input_value = ""
-    
-
+    #Receives input from volume slider
     def get_music_volume(event):
         slider_value = music_slider.get()
         pygame.mixer.music.set_volume(slider_value/10)
-
+        
+    #Receives chess move from entry widget
     def chess_input_return(*args):
         input_value = user_move_input.get()
         print(input_value)
-        #return input_value
         user_move_input.delete(0, END)
+
+    input_value = ""
+    
 
     #Play music button
     music_start_button = Button(root, text="Play Song", font=("Helvetica", 32), command=play)
@@ -127,19 +128,19 @@ def game_loop():
     print(input_value)
 
     #Title for music volume slider
-    music_slider_title = Label(root, text="Music Volume", bg="white", fg="gold", font=("Helvetica", 16))
+    music_slider_title = Label(root, text="Music Volume", bg="white", fg="goldenrod2", font=("Helvetica", 16))
     music_slider_title.place(bordermode=OUTSIDE, x=790, y=320)
 
     #Music volume slider
-    music_slider = Scale(root, from_=1, to=10, tickinterval=10, bg="gold", orient=HORIZONTAL, command=get_music_volume)
+    music_slider = Scale(root, from_=1, to=10, tickinterval=10, bg="goldenrod2", orient=HORIZONTAL, command=get_music_volume)
     music_slider.set(0)
     music_slider.place(bordermode=OUTSIDE, x=805, y=350)
     
 
     #RANDOM BUTTON NOT CURRENTLY IN USE
-    random_button = Button(root, text = "Enter Move")
-    random_button.bind("<Return>", click)
-    random_button.place(bordermode=OUTSIDE, x=830, y=845)
+    #random_button = Button(root, text = "Enter Move")
+    #random_button.bind("<Return>", click)
+    #random_button.place(bordermode=OUTSIDE, x=830, y=845)
 
 
     #for every puzzle answered add one to score
@@ -148,11 +149,6 @@ def game_loop():
 
     #Three incorrect answers ends the game
     incorrect = 0
-
-    #Text that displays the current score
-    score_text = Text(root)
-    score_text.insert(INSERT, f"Score: {score}")
-    score_text.place(x=400, y=400)
     
 
     #x and y of checkmark/red x/ neutral gray
@@ -163,14 +159,20 @@ def game_loop():
     #For different puzzle program will run different code
     while True:
         
-        
+        #Text that displays the current score
+        score_text = Text(root, width=1, height=1, borderwidth=5, bg="goldenrod2", fg="DeepSkyBlue3", font=("Helvetica", 28))
+        score_text.insert(INSERT, f"{score}")
+        score_text.place(x=815, y=420)
+
+        incorrect_text = Text(root, width=1, height=1, borderwidth=5, bg="goldenrod2", fg="red2", font=("Helvetica", 28))
+        incorrect_text.insert(INSERT, f"{incorrect}")
+        incorrect_text.place(x=855, y=420)
 
         #Generate random puzzle
         random_puzzle = random.randrange(0, 8)
     
 
         if incorrect ==3:
-            print(f"thats it, your score is: {score}")
             break
 
         #Handles all chess puzzles with a length of 2 images 
@@ -181,9 +183,9 @@ def game_loop():
             resized = my_pic.resize((500, 500), Image.ANTIALIAS)
             new_pic = ImageTk.PhotoImage(resized)
             my_label = Label(root, image=new_pic)
-            my_label.place(bordermode = OUTSIDE, x=100, y=495)
+            my_label.place(x=100, y=495)
             my_label = Label(root, image=None)
-            chess_move = input("Answer: ")
+            chess_move = input()
 
                
 
@@ -202,15 +204,6 @@ def game_loop():
                 print(score)
 
 
-                #Correct answer places checkmark
-                checkmark = PhotoImage(file="Game Files/Objects/Green checkmark.png")
-                checkmark_label = Label(root, image=checkmark, anchor=NW)
-                checkmark_label.config(bg="white")
-                checkmark_label.place(x=solution_x, y=solution_y)
-                checkmark_label = Label(root, image=None)
-                solution_x += 50
-                
-            
             else:
                 print("Incorrect")
                 incorrect += 1
@@ -252,12 +245,7 @@ def game_loop():
                     score += 1
                     print(score)
                 
-                    #Correct answer places checkmark
-                    checkmark = PhotoImage(file="Game Files/Objects/Green checkmark.png")
-                    checkmark_label = Label(root, image=checkmark, anchor=NW)
-                    checkmark_label.config(bg="white")
-                    checkmark_label.place(x=solution_x, y=solution_y)
-                    checkmark_label = Label(root, image=None)
+                    
 
                     solution_x += 50
                     
@@ -286,25 +274,31 @@ def game_loop():
                 if chess_move == master_answer[random_puzzle][answer_choose]:
                     image_chooser += 1
                     answer_choose += 1
-                    
+                    break_again = 0
 
                 else:
                     incorrect += 1
+                    break_again = 1
                     break
 
-            my_pic = Image.open(master_list[random_puzzle][image_chooser])
-            resized = my_pic.resize((500, 500), Image.ANTIALIAS)
-            new_pic = ImageTk.PhotoImage(resized)
-            my_label = Label(root, image=new_pic)
-            my_label.place(bordermode = OUTSIDE, x=100, y=495)
-            coin_sound = pygame.mixer.Sound("Game Files/Objects/Coin solve sound.x-wav")
-            pygame.mixer.Sound.play(coin_sound)
-            chess_move = input("PRESS ANY KEY")
-            time.sleep(1)
-            score += 1
-            print(score)
+            #resolves issue where the player gains score even when their answer is wrong
+            if break_again == 1:
+                continue
 
-    
+        
+            else:
+                my_pic = Image.open(master_list[random_puzzle][image_chooser])
+                resized = my_pic.resize((500, 500), Image.ANTIALIAS)
+                new_pic = ImageTk.PhotoImage(resized)
+                my_label = Label(root, image=new_pic)
+                my_label.place(bordermode = OUTSIDE, x=100, y=495)
+                coin_sound = pygame.mixer.Sound("Game Files/Objects/Coin solve sound.x-wav")
+                pygame.mixer.Sound.play(coin_sound)
+                chess_move = input("PRESS ANY KEY")
+                time.sleep(1)
+                score += 1
+                print(score)
+
 
 #Main game loop
 while True:
