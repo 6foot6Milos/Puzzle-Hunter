@@ -14,6 +14,10 @@ def play_again():
         pygame.mixer.music.stop()
         root.destroy()
 
+    def instructions_command():
+        main.window=4
+        root.destroy()
+
     #Fundamental window settings
     root = Tk()
     root.title("Puzzle-Hunter")
@@ -29,11 +33,14 @@ def play_again():
     bg_label = Label(root, image=bg)
     bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
+    #Opens the instructions menu
+    instructions_button = Button(root, text="Instructions", font=("Helvetica",10), bg = "goldenrod2",fg = "cyan4", width = 20, command = instructions_command)
+    instructions_button.place(bordermode=OUTSIDE, x=10, y=10)
 
     #Text that displays the final score
     score_text = Text(root, width=13, height=1, borderwidth=5, bg="lightgoldenrod", fg="DeepSkyBlue3", font=("Helvetica", 64))
     score_text.insert(INSERT, f"Final Score: {final_score}")
-    score_text.place(x=370, y=10)
+    score_text.place(x=340, y=10)
 
     #Takes the user back into the game
     start_button = Button(root, text="Play Again", font=("Helvetica, 32"), bg="cyan4", fg="goldenrod2", width=28, command = play_again_command)

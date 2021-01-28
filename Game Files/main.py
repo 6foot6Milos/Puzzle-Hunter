@@ -4,6 +4,7 @@ from PIL import ImageTk, Image
 import pygame
 import random, time, sys, os
 from menu import start_menu
+from instructions import instructions_menu
 from end import play_again
 pygame.mixer.init()
 
@@ -139,7 +140,10 @@ def game_loop():
         #Generate random puzzle
         random_puzzle = random.randrange(0, 12)
     
-        if incorrect == 3:
+        if window == 4:
+            break
+
+        elif incorrect == 3:
             return score
             
         #Handles all chess puzzles with a length of 2 images 
@@ -267,14 +271,20 @@ def game_loop():
                 time.sleep(1)
                 score += 1
 
+    
+pygame.mixer.music.load("Game Files/Objects/01_Main Menu.mp3")
+pygame.mixer.music.play(loops=2)
 
 #Main game loop
 while True:
-    if window==0:
+    
+    if window == 0:
         start_menu()
         
-    
-    elif window==1:
+    elif window == 4:
+        instructions_menu()
+
+    elif window == 1:
         #fundamental screen settings
         root = Tk()
         root.title("Puzzle-Hunter")
@@ -292,12 +302,12 @@ while True:
         
        
         root.destroy()
-        
-
-    elif window==2:
+    
+    
+    elif window == 2:
         play_again()
 
-    elif window== -1:
+    elif window == -1:
         sys.exit()
         
 
