@@ -31,9 +31,9 @@ def play_again():
 
 
     #Text that displays the final score
-    score_text = Text(root, width=1, height=1, borderwidth=5, bg="lightgoldenrod", fg="DeepSkyBlue3", font=("Helvetica", 64))
-    score_text.insert(INSERT, f"{final_score}")
-    score_text.place(x=170, y=570)
+    score_text = Text(root, width=12, height=1, borderwidth=5, bg="lightgoldenrod", fg="DeepSkyBlue3", font=("Helvetica", 64))
+    score_text.insert(INSERT, f"Final Score: {final_score}")
+    score_text.place(x=370, y=10)
 
     #Takes the user back into the game
     start_button = Button(root, text="Play Again", font=("Helvetica, 32"), bg="cyan4", fg="goldenrod2", width=28, command = play_again_command)
