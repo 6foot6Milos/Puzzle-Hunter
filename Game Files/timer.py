@@ -10,7 +10,7 @@ def timer():
 
 
     import main
-    from main import root, os
+    from main import os
     # Declaration of variables
     hour=StringVar()
     minute=StringVar()
@@ -76,7 +76,7 @@ def timer():
         else:
             main.window= -1
             timer_root.destroy()
-            os.exit(0)
+            #os.exit(0)
     
     submit()
     

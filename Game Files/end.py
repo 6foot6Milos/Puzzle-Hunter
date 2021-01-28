@@ -2,7 +2,7 @@ from tkinter import *
 #Menu at the end of the game
 def play_again():
     import main
-    from main import window, pygame
+    from main import window, pygame, final_score
 
     def play_again_command():
         main.window=1
@@ -28,6 +28,12 @@ def play_again():
     bg = PhotoImage(file="Game Files/Objects/End Menu.png")
     bg_label = Label(root, image=bg)
     bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+    #Text that displays the final score
+    score_text = Text(root, width=1, height=1, borderwidth=5, bg="lightgoldenrod", fg="DeepSkyBlue3", font=("Helvetica", 64))
+    score_text.insert(INSERT, f"{final_score}")
+    score_text.place(x=170, y=570)
 
     #Takes the user back into the game
     start_button = Button(root, text="Play Again", font=("Helvetica, 32"), bg="cyan4", fg="goldenrod2", width=28, command = play_again_command)
