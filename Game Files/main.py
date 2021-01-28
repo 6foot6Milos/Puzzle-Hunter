@@ -19,11 +19,13 @@ puzzle_05 = ["Game Files/Images/Nd6+.png", "Game Files/Images/Nd6#.png"]
 puzzle_06 = ["Game Files/Images/Bf6+.png", "Game Files/Images/Bf6#.png"]
 puzzle_07 = ["Game Files/Images/c8+.png", "Game Files/Images/c8+ Qd8.png", "Game Files/Images/c8+ Qd8 Qd8.png"]
 puzzle_08 = ["Game Files/Images/Qh5.png", "Game Files/Images/Qh5 g6.png", "Game Files/Images/Qh5 g6 Qg6 hg6.png", "Game Files/Images/Qh5 g6 Qg6 hg6 Bg6.png"]
-puzzle_09 = []
-
+puzzle_09 = ["Game Files/Images/Ra5.png", "Game Files/Images/Ra5 c5.png", "Game Files/Images/Ra5 c5 Rxc5.png"]
+puzzle_10 = ["Game Files/Images/Qa7.png", "Game Files/Images/Qa7 Ka7.png", "Game Files/Images/Qa7 Ka7 bc8.png"]
+puzzle_11 = ["Game Files/Images/Rxa4.png", "Game Files/Images/Rxa4 bxa4.png", "Game Files/Images/Rxa4 bxa4 Qb6 Ka3.png", "Game Files/Images/Rxa4 bxa4 Qb6 Ka3 Qb2.png"]
+puzzle_12 = ["Game Files/Images/Qh4.png", "Game Files/Images/Qh4 Kg1.png", "Game Files/Images/Qh4 Kg1 Rg8.png"]
 
 #master list of all the puzzle lists
-master_list = [puzzle_01, puzzle_02, puzzle_03, puzzle_04, puzzle_05, puzzle_06, puzzle_07, puzzle_08]
+master_list = [puzzle_01, puzzle_02, puzzle_03, puzzle_04, puzzle_05, puzzle_06, puzzle_07, puzzle_08, puzzle_09, puzzle_10, puzzle_11, puzzle_12]
 
 #Answers list in order
 answer_01 = ["d4"]
@@ -34,9 +36,13 @@ answer_05 = ["nd6"]
 answer_06 = ["bf6"]
 answer_07 = ["c8", "qd8"]
 answer_08 = ["qh5", "qg6", "bg6"]
+answer_09 = ["ra5", "rc5"]
+answer_10 = ["qa7", "bc8=n"]
+answer_11 = ["ra4", "qb6", "qb2"]
+answer_12 = ["qh4", "rg8"]
 
 #nested list of puzzle answers
-master_answer = [answer_01, answer_02, answer_03, answer_04, answer_05, answer_06, answer_07, answer_08]
+master_answer = [answer_01, answer_02, answer_03, answer_04, answer_05, answer_06, answer_07, answer_08, answer_09, answer_10, answer_11, answer_12]
 
 
 #Offers the user the feature to randomly select a song
@@ -78,7 +84,6 @@ def game_loop():
         input_value = user_move_input.get()
         print(input_value)
         user_move_input.delete(0, END)
-        breakout = 1
         return input_value
 
 
@@ -132,7 +137,7 @@ def game_loop():
         incorrect_text.place(x=862, y=420)
 
         #Generate random puzzle
-        random_puzzle = random.randrange(0, 8)
+        random_puzzle = random.randrange(0, 12)
     
         if incorrect == 3:
             return score
