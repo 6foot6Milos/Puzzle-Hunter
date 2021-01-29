@@ -11,7 +11,7 @@ pygame.mixer.init()
 #Decides which menu to go to
 window=0
 
-#Puzzle lists
+#Puzzle lists containing each frame of the chess puzzle
 puzzle_01 = ["Game Files/Images/d4+.png", "Game Files/Images/d4#.png"]
 puzzle_02 = ["Game Files/Images/g6.png", "Game Files/Images/g6 hxg6.png", "Game Files/Images/g6 hxg6 Nxg6#.png"]
 puzzle_03 = ["Game Files/Images/Qa5+.png", "Game Files/Images/Qa5+ Kf1.png", "Game Files/Images/Qa5+ Kf1 Qxb5.png"]
@@ -28,7 +28,7 @@ puzzle_12 = ["Game Files/Images/Qh4.png", "Game Files/Images/Qh4 Kg1.png", "Game
 #master list of all the puzzle lists
 master_list = [puzzle_01, puzzle_02, puzzle_03, puzzle_04, puzzle_05, puzzle_06, puzzle_07, puzzle_08, puzzle_09, puzzle_10, puzzle_11, puzzle_12]
 
-#Answers list in order
+#Answers list in order of the puzzle lists
 answer_01 = ["d4"]
 answer_02 = ["g6", "ng6"]
 answer_03 = ["qa5", "qb5"]
@@ -100,7 +100,7 @@ def game_loop():
     music_stop_button.place(bordermode = OUTSIDE, x=745, y=200)
 
 
-    #(Entry) Input for chess moves
+    #(Entry) Input for chess moves (Not working properly)
     user_move_label = Label(root, text="Your move:")
     user_move_label.place(bordermode=OUTSIDE, x=715, y=850)
     user_move_input = Entry(root, width = 15)
@@ -112,6 +112,7 @@ def game_loop():
     #Title for music volume slider
     music_slider_title = Label(root, text="Music Volume", bg="white", fg="goldenrod2", font=("Helvetica", 16))
     music_slider_title.place(bordermode=OUTSIDE, x=790, y=320)
+
 
     #Music volume slider
     music_slider = Scale(root, from_=1, to=10, tickinterval=10, borderwidth=2, bg="goldenrod2", orient=HORIZONTAL, command=get_music_volume)
@@ -127,7 +128,7 @@ def game_loop():
     #For different puzzle program will run different code
     while True:
         
-        #Text that displays the current score
+        #Displays the current score
         score_text = Text(root, width=2, height=1, borderwidth=5, bg="goldenrod2", fg="DeepSkyBlue3", font=("Helvetica", 28))
         score_text.insert(INSERT, f"{score}")
         score_text.place(x=802, y=420)

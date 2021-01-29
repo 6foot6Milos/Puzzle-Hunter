@@ -1,14 +1,19 @@
+'''
+Menu at the end of the game that offers play again and quit options
+'''
 from tkinter import *
-#Menu at the end of the game
+
 def play_again():
     import main
     from main import window, pygame, final_score
 
+    #Sets the window to the game menu
     def play_again_command():
         main.window=1
         pygame.mixer.music.stop()
         root.destroy()
 
+    #Terminates the game
     def game_end_command():
         main.window = -1
         pygame.mixer.music.stop()
