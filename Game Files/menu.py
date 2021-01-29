@@ -36,8 +36,8 @@ def start_menu():
     start_button.place(bordermode=OUTSIDE, x=266, y=540)
     
     #Opens the instructions menu
-    instructions_button = Button(root, text="Instructions", font=("Helvetica",10), bg = "goldenrod2",fg = "cyan4", width = 20, command = instructions_command)
-    instructions_button.place(bordermode=OUTSIDE, x=763, y=760)
+    instructions_button = Button(root, text="Instructions", font=("Helvetica",10), bg = "turquoise3",fg = "blue", width = 20, command = instructions_command)
+    instructions_button.place(bordermode=OUTSIDE, x=10, y=920)
 
     root.mainloop()
 

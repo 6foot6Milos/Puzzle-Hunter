@@ -11,9 +11,9 @@ def instructions_menu():
 
     
     def instructions_command():
-        main.window=0
-        root.destroy()
-    
+            main.window=0
+            root.destroy()
+
     root = Tk()
     root.title("Puzzle-Hunter")
     root.geometry("1280x960")
